@@ -1,13 +1,13 @@
 #!/bin/bash
 
-package_name="clifty"
-link_clifty="https://github.com/Alygnt/Clifty"
-link_clifty_raw="https://raw.githubusercontent.com/Alygnt/Clifty/main"
+package_name="Zahir"
+link_Zahirxyz="https://github.com/Zahirxyz/Zahirxyz"
+link_Zahirxyz_raw="https://raw.githubusercontent.com/Zahirxyz/Zahirxyz/main"
 
 clear
 cd $HOME
 
-version=$(curl -s "${link_clifty_raw}/assets/update/version.txt")
+version=$(curl -s "${link_Zahirxyz_raw}/assets/update/version.txt")
 version="1.5"
 
 #Check whether package is installed
@@ -22,11 +22,11 @@ package_installed() {
 }
 
 latest_version() {
-    current_ver=$(clifty -v)
+    current_ver=$(Zahirxyz -v)
     if [ "$version" == "$current_ver" ]; then
-        clifty -cb
-        echo -ne  "\nYou already have Clifty latest version"
-        echo -ne "\nType 'clifty' to run it"
+        Zahirxyz -cb
+        echo -ne  "\nYou already have Zahir latest version"
+        echo -ne "\nType 'zahir' to run it"
     else 
         install_now
     fi
@@ -61,23 +61,23 @@ dependencies() {
 
 # Function to set variables
 variables() {
-    version=$(curl -s https://raw.githubusercontent.com/Alygnt/Clifty/main/assets/update/version.txt)
-    link_clifty="https://github.com/Alygnt/Clifty"
+    version=$(curl -s https://raw.githubusercontent.com/Zahirxyz/Zahirxyz/main/assets/update/version.txt)
+    link_Zahirxyz="https://github.com/Zahirxyz/Zahirxyz"
 }
 
-# Function to install Clifty
+# Function to install Zahirxyz
 install_deb() {
-    wget --no-check-certificate ${link_clifty}/releases/download/v_${version}/clifty_${version}.deb > /dev/null 2>&1
+    wget --no-check-certificate ${link_Zahirxyz}/releases/download/v_${version}/Zahirxyz_${version}.deb > /dev/null 2>&1
     if [[ $(command -v termux-chroot) ]]; then
-        termux-chroot dpkg -i clifty_${version}.deb
+        termux-chroot dpkg -i Zahirxyz_${version}.deb
     else
         if [ "$SUDO_USER" ]; then
-            sudo dpkg -i "clifty_${version}.deb"
+            sudo dpkg -i "zahirxyz_${version}.deb"
         else
-            dpkg -i "clifty_${version}.deb"
+            dpkg -i "zahirxyz_${version}.deb"
         fi
     fi
-    rm -rf clifty_${version}.deb
+    rm -rf Zahirxyz_${version}.deb
 }
 
 # Function to clean up
@@ -87,19 +87,19 @@ clean() {
     fi
 }
 
-# Function to run Clifty
+# Function to run Zahirxyz
 run() {
     if [ "$SUDO_USER" ]; then
-        sudo clifty
+        sudo Zahirxyz
     else
-        clifty
+        Zahirxyz
     fi
 }
 
 finish(){
     clear
-    clifty -b
-    echo -ne "\nClifty tool is now ready type 'clifty' to run it"
+    Zahirxyz -b
+    echo -ne "\nZahirxyz tool is now ready type 'zahirxyz' to run it"
 }
 
 install_now(){
